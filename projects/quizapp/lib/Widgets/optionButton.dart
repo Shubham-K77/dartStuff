@@ -1,5 +1,6 @@
 //Import
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 //Stateless Widget
 class OptionButton extends StatelessWidget {
@@ -35,7 +36,11 @@ class OptionButton extends StatelessWidget {
         ),
         child: Text(
           optionText,
-          style: TextStyle(color: Colors.white, fontSize: 15),
+          style: GoogleFonts.poppins(
+            color: Colors.white,
+            fontSize: 12,
+            fontWeight: FontWeight.normal,
+          ),
         ),
       ),
     );

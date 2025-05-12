@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quizapp/screens/Quiz.dart';
 
 class Home_Screen extends StatelessWidget {
@@ -22,10 +23,10 @@ class Home_Screen extends StatelessWidget {
               alignment: Alignment.center,
               child: Text(
                 "Bodha: Discover the Joy of Knowing More",
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                   color: Color(0xFF63412E),
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
             ),
