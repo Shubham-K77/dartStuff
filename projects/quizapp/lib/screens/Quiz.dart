@@ -42,6 +42,13 @@ class _QuizScreenState extends State<QuizScreen> {
                   setState(() {
                     category = "History";
                   });
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (context) => MainQuestionScreen(category: category),
+                    ),
+                  );
                 },
                 child: OptionsCard(
                   bgColor: Color(0xFFFFE066),
@@ -54,6 +61,13 @@ class _QuizScreenState extends State<QuizScreen> {
                   setState(() {
                     category = "Technology";
                   });
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (context) => MainQuestionScreen(category: category),
+                    ),
+                  );
                 },
                 child: OptionsCard(
                   bgColor: Color(0xFFFFB347),
@@ -66,6 +80,13 @@ class _QuizScreenState extends State<QuizScreen> {
                   setState(() {
                     category = "Math";
                   });
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (context) => MainQuestionScreen(category: category),
+                    ),
+                  );
                 },
                 child: OptionsCard(
                   bgColor: Color(0xFFA0E7E5),
@@ -78,6 +99,13 @@ class _QuizScreenState extends State<QuizScreen> {
                   setState(() {
                     category = "Science";
                   });
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (context) => MainQuestionScreen(category: category),
+                    ),
+                  );
                 },
                 child: OptionsCard(
                   bgColor: Color(0xFFFFD6A5),
