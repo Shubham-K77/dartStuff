@@ -22,7 +22,7 @@ class ScoreScreen extends StatelessWidget {
       final selected = selectedAnswers[i].toString().trim().toLowerCase();
       final correct = correctAnswers[i].toString().trim().toLowerCase();
       if (selected == correct) {
-        score++;
+        ++score; //Pre-Increment To Make The Score Upto 10 Marks
       }
     }
     return score;
