@@ -1,12 +1,12 @@
 import 'package:quizapp/models/quiz_question.dart';
 
-final questions = [
+var questions = [
   // Science
   QuizQuestions(
     category: "Science",
     text: "What is the chemical symbol for water?",
     answers: ["H2O", "CO2", "O2", "H2SO4"],
-    correctAnswer: "H20",
+    correctAnswer: "H2O",
   ),
   QuizQuestions(
     category: "Science",
@@ -304,7 +304,7 @@ final questions = [
   ),
   QuizQuestions(
     category: "Technology",
-    text: "What does “AI” stand for in tech?",
+    text: "What does AI stand for in tech?",
     answers: [
       "Advanced Input",
       "Artificial Intelligence",
@@ -334,13 +334,13 @@ final questions = [
   ),
   QuizQuestions(
     category: "Technology",
-    text: "What is the name of Microsoft’s spreadsheet program?",
+    text: "What is the name of Microsoft's spreadsheet program?",
     answers: ["PowerPoint", "Excel", "Word", "Sheets"],
     correctAnswer: "Excel",
   ),
   QuizQuestions(
     category: "Technology",
-    text: "What does “URL” stand for?",
+    text: "What does URL stand for?",
     answers: [
       "Uniform Resource Locator",
       "Universal Routing Link",
@@ -357,33 +357,35 @@ final questions = [
   ),
 ];
 
-//Logic To Send The Questions of Specific Category:
+// Logic To Send The Questions of Specific Category:
 final scienceQuestions =
     questions
         .where((question) => question.category == "Science")
         .take(10)
-        .toList();
+        .toList()
+      ..shuffle();
 
 final technologyQuestions =
     questions
         .where((question) => question.category == "Technology")
         .take(10)
-        .toList();
+        .toList()
+      ..shuffle();
 
 final geographyQuestions =
     questions
         .where((question) => question.category == "Geography")
         .take(10)
-        .toList();
+        .toList()
+      ..shuffle();
 
 final mathQuestions =
-    questions
-        .where((question) => question.category == "Math")
-        .take(10)
-        .toList();
+    questions.where((question) => question.category == "Math").take(10).toList()
+      ..shuffle();
 
 final historyQuestions =
     questions
         .where((question) => question.category == "History")
         .take(10)
-        .toList();
+        .toList()
+      ..shuffle();

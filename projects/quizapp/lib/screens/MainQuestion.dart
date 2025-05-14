@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:quizapp/Widgets/optionButton.dart';
 import 'package:quizapp/data/questions.dart';
 import 'package:quizapp/screens/ScoreScreen.dart';
+import 'dart:async';
 
 class MainQuestionScreen extends StatefulWidget {
   final String category;
@@ -17,8 +18,31 @@ class _MainQuestionScreenState extends State<MainQuestionScreen> {
   var selectedAnswers = [];
   var correctAnswers = [];
   var questions = [];
+  late Timer _timer;
+  int _start = 30;
+  //Logic to start the timer:
+  void startTimer() {
+    _start = 30;
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      if (_start == 0) {
+        timer.cancel();
+        answerQuestion("Out of Time!");
+      } else {
+        setState(() {
+          _start--;
+        });
+      }
+    });
+  }
+
+  // Cancel timer when user answers
+  void stopTimer() {
+    _timer.cancel();
+  }
+
   //Logic To Iterate Into Next Question:
   void answerQuestion(answer) {
+    stopTimer();
     selectedAnswers.add(answer);
     correctAnswers.add(currentQuestions[currentQuestionsIndex].correctAnswer);
     questions.add(currentQuestions[currentQuestionsIndex].text);
@@ -26,6 +50,7 @@ class _MainQuestionScreenState extends State<MainQuestionScreen> {
       setState(() {
         currentQuestionsIndex++;
       });
+      startTimer();
     } else {
       Navigator.push(
         context,
@@ -62,6 +87,13 @@ class _MainQuestionScreenState extends State<MainQuestionScreen> {
   void initState() {
     super.initState();
     updatedQuestions();
+    startTimer(); //Intial Timer Start
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _timer.cancel();
   }
 
   @override
@@ -74,6 +106,14 @@ class _MainQuestionScreenState extends State<MainQuestionScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.all(10),
+                child: Text(
+                  "Time Left: $_start s",
+                  style: TextStyle(fontSize: 20, color: Colors.red),
+                ),
+              ),
               Container(
                 alignment: Alignment.center,
                 margin: EdgeInsets.all(10),
